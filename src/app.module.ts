@@ -14,8 +14,8 @@ import { OrderDetail } from "./order_detail/order_detail.model";
 import { Review } from "./review/review.model";
 import { AuthModule } from "./auth/auth.module";
 import { ConfigModule } from "@nestjs/config";
-import { AddressModule } from './address/address.module';
-import { UserModule } from './user/user.module';
+import { AddressModule } from "./address/address.module";
+import { UserModule as m } from "./user/user.module";
 
 @Module({
   controllers: [],

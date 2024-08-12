@@ -5,41 +5,57 @@ import {
   DataType,
   HasMany,
   HasOne,
-  ForeignKey,
-  BelongsTo,
 } from "sequelize-typescript";
 import { Order } from "src/order/order.model";
 import { Review } from "src/review/review.model";
-import { User } from "src/user/user.model";
 import { Chef } from "src/user_chef/user_chef.model";
 // import { Chef } from './chef.model';
 // import { Order } from './order.model';
 // import { Review } from './review.model';
 
 interface UserCreationAttrs {
-  userId: number;
+  name: string;
+  email: string;
+  password: string;
+  address: string;
+  phone_number: string;
   role: string;
 }
 
 @Table({ timestamps: true, tableName: "users" })
-export class Customer extends Model<Customer, UserCreationAttrs> {
+export class User extends Model<User, UserCreationAttrs> {
   @Column({
     type: DataType.INTEGER,
     unique: true,
     autoIncrement: true,
     primaryKey: true,
   })
-  customer_id: number;
+  user_id: number;
 
-  @ForeignKey(() => User)
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.STRING,
     allowNull: false,
   })
-  userId: number;
+  name: string;
 
-  @BelongsTo(() => User)
-  user: User;
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+    unique: true,
+  })
+  email: string;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  password: string;
+
+  @Column(DataType.TEXT)
+  address: string;
+
+  @Column(DataType.STRING)
+  phone_number: string;
 
   @Column({
     type: DataType.ENUM,
@@ -47,6 +63,9 @@ export class Customer extends Model<Customer, UserCreationAttrs> {
     allowNull: false,
   })
   role: string;
+
+  @HasOne(() => Chef)
+  chef: Chef;
 
   @HasMany(() => Order)
   orders: Order[];

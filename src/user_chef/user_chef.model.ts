@@ -9,7 +9,7 @@ import {
 } from "sequelize-typescript";
 import { Dish } from "src/dish/dish.model";
 import { Review } from "src/review/review.model";
-import { User } from "src/user/user.model";
+import { User } from "src/user_customer/user_customer.model";
 
 @Table({ tableName: "chefs" })
 export class Chef extends Model<Chef> {

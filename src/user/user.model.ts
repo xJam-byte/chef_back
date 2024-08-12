@@ -1,6 +1,6 @@
 import { Table, Column, Model, DataType, HasOne } from "sequelize-typescript";
 import { Chef } from "src/user_chef/user_chef.model";
-import { Customer } from "src/user_customer/user_customer.model";
+// import { Customer } from "src/user_customer/user_customer.model";
 
 @Table({ tableName: "users" })
 export class User extends Model<User> {
@@ -29,6 +29,9 @@ export class User extends Model<User> {
   })
   password: string;
 
+  @Column(DataType.STRING)
+  phone_number: string;
+
   @Column({
     type: DataType.ENUM,
     values: ["chef", "customer"],
@@ -39,6 +42,6 @@ export class User extends Model<User> {
   @HasOne(() => Chef)
   chef: Chef;
 
-  @HasOne(() => Customer)
-  customer: Customer;
+  //   @HasOne(() => Customer)
+  //   customer: Customer;
 }
