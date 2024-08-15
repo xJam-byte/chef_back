@@ -6,6 +6,7 @@ import {
   HasMany,
   HasOne,
 } from "sequelize-typescript";
+import { Address } from "src/address/address.model";
 import { Order } from "src/order/order.model";
 import { Review } from "src/review/review.model";
 import { Chef } from "src/user_chef/user_chef.model";
@@ -17,7 +18,6 @@ interface UserCreationAttrs {
   name: string;
   email: string;
   password: string;
-  address: string;
   phone_number: string;
   role: string;
 }
@@ -51,9 +51,6 @@ export class User extends Model<User, UserCreationAttrs> {
   })
   password: string;
 
-  @Column(DataType.TEXT)
-  address: string;
-
   @Column(DataType.STRING)
   phone_number: string;
 
@@ -72,4 +69,7 @@ export class User extends Model<User, UserCreationAttrs> {
 
   @HasMany(() => Review)
   reviews: Review[];
+
+  @HasMany(() => Address)
+  address: Address;
 }

@@ -6,8 +6,7 @@ import {
   ForeignKey,
   BelongsTo,
 } from "sequelize-typescript";
-import { User } from "src/user/user.model";
-import { Chef } from "src/user_chef/user_chef.model";
+import { User } from "src/user_customer/user_customer.model";
 
 @Table({ tableName: "addresses" })
 export class Address extends Model<Address> {

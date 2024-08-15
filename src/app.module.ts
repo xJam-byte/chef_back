@@ -16,6 +16,7 @@ import { AuthModule } from "./auth/auth.module";
 import { ConfigModule } from "@nestjs/config";
 import { AddressModule } from "./address/address.module";
 import { UserModule as m } from "./user/user.module";
+import { Address } from "./address/address.model";
 
 @Module({
   controllers: [],
@@ -31,7 +32,7 @@ import { UserModule as m } from "./user/user.module";
       username: process.env.DB_USER,
       password: String(process.env.DB_PASSWORD),
       database: process.env.DB_NAME,
-      models: [User, Chef, Dish, Order, OrderDetail, Review],
+      models: [User, Chef, Dish, Order, OrderDetail, Review, Address],
       autoLoadModels: true,
       synchronize: true,
     }),

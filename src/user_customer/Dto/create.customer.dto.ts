@@ -21,10 +21,6 @@ export class CreateCustomerDto {
 
   @IsString()
   @IsOptional()
-  readonly address?: string;
-
-  @IsString()
-  @IsOptional()
   readonly phone_number?: string;
 
   @IsEnum(["customer", "chef", "admin"])
