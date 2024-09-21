@@ -13,7 +13,9 @@ import { User } from "src/user_customer/user_customer.model";
 export class Review extends Model<Review> {
   @Column({
     type: DataType.INTEGER,
-    allowNull: false,
+    unique: true,
+    autoIncrement: true,
+    primaryKey: true,
   })
   review_id: number;
   @ForeignKey(() => User)

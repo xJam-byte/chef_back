@@ -3,6 +3,7 @@ import { User } from "./user_customer.model";
 import { InjectModel } from "@nestjs/sequelize";
 import { CreateCustomerDto } from "./Dto/create.customer.dto";
 import * as bcrypt from "bcrypt";
+import { log } from "console";
 
 @Injectable()
 export class UserService {
@@ -13,6 +14,19 @@ export class UserService {
 
   async findOneByEmail(email: string): Promise<User> {
     return this.userModel.findOne({ where: { email } });
+  }
+  async changeRole(userId: number, newRole: string) {
+    const user = await this.findOneById(userId);
+    if (!user) {
+      throw new Error("User not found");
+    }
+
+    user.role = newRole;
+    await user.save();
+    return user;
+  }
+  async findOneById(id: number): Promise<User> {
+    return this.userModel.findOne({ where: { user_id: id } });
   }
 
   async createUser(createCustomerDto: CreateCustomerDto): Promise<User> {

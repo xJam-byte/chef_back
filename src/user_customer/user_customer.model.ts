@@ -10,15 +10,13 @@ import { Address } from "src/address/address.model";
 import { Order } from "src/order/order.model";
 import { Review } from "src/review/review.model";
 import { Chef } from "src/user_chef/user_chef.model";
-// import { Chef } from './chef.model';
-// import { Order } from './order.model';
-// import { Review } from './review.model';
 
 interface UserCreationAttrs {
   name: string;
   email: string;
   password: string;
   phone_number: string;
+  profile_pic: string;
   role: string;
 }
 
@@ -53,6 +51,9 @@ export class User extends Model<User, UserCreationAttrs> {
 
   @Column(DataType.STRING)
   phone_number: string;
+
+  @Column(DataType.TEXT)
+  profile_pic: string;
 
   @Column({
     type: DataType.ENUM,

@@ -23,6 +23,10 @@ export class CreateCustomerDto {
   @IsOptional()
   readonly phone_number?: string;
 
+  @IsString()
+  @IsOptional()
+  readonly profile_pic?: string;
+
   @IsEnum(["customer", "chef", "admin"])
   readonly role: string = "customer";
 }
