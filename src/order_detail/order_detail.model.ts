@@ -45,6 +45,12 @@ export class OrderDetail extends Model<OrderDetail> {
   quantity: number;
 
   @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  preferences: string;
+
+  @Column({
     type: DataType.DECIMAL(10, 2),
     allowNull: false,
   })

@@ -12,7 +12,7 @@ export class CreateDishDto {
   readonly description: string;
   @IsString()
   @IsNotEmpty()
-  readonly picture?: string;
+  picture?: string;
   @IsString()
   @IsNotEmpty()
   readonly type: string;
@@ -24,5 +24,5 @@ export class CreateDishDto {
   readonly price: number;
 
   @IsEnum(["avialable", "not_aviable"])
-  readonly availability_status: string = "not_available";
+  readonly availability_status?: string = "available";
 }

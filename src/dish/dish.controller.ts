@@ -1,5 +1,4 @@
-// dish.controller.ts
-import { Controller, Post, Body, Get } from "@nestjs/common";
+import { Controller, Post, Body, Get, Param } from "@nestjs/common";
 import { DishService } from "./dish.service";
 import { CreateDishDto } from "./Dto/create.dish.dto";
 
@@ -15,5 +14,9 @@ export class DishController {
   @Get()
   getAllDishes() {
     return this.dishService.getAllDishes();
+  }
+  @Get("getByChef/:id")
+  getDishesOfChef(@Param("id") id: number) {
+    return this.dishService.getChefDishes(id);
   }
 }

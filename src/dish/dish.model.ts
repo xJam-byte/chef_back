@@ -10,7 +10,6 @@ import { Chef } from "src/user_chef/user_chef.model";
 
 @Table({ tableName: "dishes" })
 export class Dish extends Model<Dish> {
-  // Primary key for the Dish model
   @Column({
     type: DataType.INTEGER,
     autoIncrement: true,
@@ -18,7 +17,6 @@ export class Dish extends Model<Dish> {
   })
   dish_id: number;
 
-  // Foreign key referencing the Chef model
   @ForeignKey(() => Chef)
   @Column({
     type: DataType.INTEGER,
@@ -59,6 +57,7 @@ export class Dish extends Model<Dish> {
   @Column({
     type: DataType.ENUM("available", "not_available"),
     allowNull: false,
+    defaultValue: "available",
   })
   availability_status: string;
 }

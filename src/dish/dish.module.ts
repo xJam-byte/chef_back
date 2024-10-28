@@ -9,5 +9,6 @@ import { Chef } from "src/user_chef/user_chef.model";
   controllers: [DishController],
   providers: [DishService],
   imports: [SequelizeModule.forFeature([Dish, Chef])],
+  exports: [DishService],
 })
 export class DishModule {}

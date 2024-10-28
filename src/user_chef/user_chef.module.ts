@@ -9,5 +9,6 @@ import { UserModule } from "src/user_customer/user_customer.module";
   controllers: [UserChefController],
   providers: [UserChefService],
   imports: [UserModule, SequelizeModule.forFeature([Chef])],
+  exports: [UserChefService],
 })
 export class UserChefModule {}

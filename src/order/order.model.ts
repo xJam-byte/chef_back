@@ -12,14 +12,13 @@ import { User } from "src/user_customer/user_customer.model";
 
 @Table({ tableName: "orders" })
 export class Order extends Model<Order> {
-  @ForeignKey(() => User)
   @Column({
     type: DataType.INTEGER,
-    unique: true,
     autoIncrement: true,
     primaryKey: true,
   })
   order_id: number;
+
   @ForeignKey(() => User)
   @Column({
     type: DataType.INTEGER,

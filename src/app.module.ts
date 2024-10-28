@@ -15,8 +15,8 @@ import { Review } from "./review/review.model";
 import { AuthModule } from "./auth/auth.module";
 import { ConfigModule } from "@nestjs/config";
 import { AddressModule } from "./address/address.module";
-import { UserModule as m } from "./user/user.module";
 import { Address } from "./address/address.model";
+import { MailerModule } from "@nestjs-modules/mailer";
 
 @Module({
   controllers: [],
@@ -25,6 +25,18 @@ import { Address } from "./address/address.model";
     ConfigModule.forRoot({
       envFilePath: `.${process.env.NODE_ENV}.env`,
     }),
+    MailerModule.forRoot({
+      transport: {
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false,
+        auth: {
+          user: "elyayexx@gmail.com",
+          pass: "dnss zdcw xsdt apke",
+        },
+      },
+    }),
+
     SequelizeModule.forRoot({
       dialect: "postgres",
       host: process.env.DB_HOST,
