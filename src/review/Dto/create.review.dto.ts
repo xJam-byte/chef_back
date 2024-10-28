@@ -1,4 +1,3 @@
-// create-review.dto.ts
 import { IsNumber, IsString, IsNotEmpty, Min, Max } from "class-validator";
 
 export class CreateReviewDto {

@@ -1,5 +1,4 @@
-// review.controller.ts
-import { Controller, Post, Body } from "@nestjs/common";
+import { Controller, Post, Body, Get, Param } from "@nestjs/common";
 import { ReviewService } from "./review.service";
 import { CreateReviewDto } from "./Dto/create.review.dto";
 
@@ -10,5 +9,10 @@ export class ReviewController {
   @Post()
   async addReview(@Body() createReviewDto: CreateReviewDto) {
     return this.reviewService.addReviewToChef(createReviewDto);
+  }
+
+  @Get("/chef/:chefId")
+  async getReviewsByChefId(@Param("chefId") chefId: number) {
+    return this.reviewService.findReviewsByChefId(chefId);
   }
 }

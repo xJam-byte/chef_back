@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post } from "@nestjs/common";
 import { Order } from "./order.model";
 import { CreateOrderDto } from "./Dto/create.order.dto";
 import { OrderService } from "./order.service";
@@ -10,5 +10,10 @@ export class OrderController {
   @Post()
   async create(@Body() createOrderDto: CreateOrderDto): Promise<Order> {
     return await this.orderService.create(createOrderDto);
+  }
+
+  @Get(":userId/history")
+  async getOrderHistory(@Param("userId") userId: number): Promise<Order[]> {
+    return await this.orderService.getOrderHistory(userId);
   }
 }

@@ -21,6 +21,13 @@ export class OrderService {
     private customerService: UserService
   ) {}
 
+  async getOrderHistory(userId: number): Promise<Order[]> {
+    return await this.orderModel.findAll({
+      where: { userId },
+      include: [{ all: true }],
+    });
+  }
+
   async create(createOrderDto: CreateOrderDto): Promise<Order> {
     const { items, ...orderData } = createOrderDto;
     const order = await this.orderModel.create(orderData);
